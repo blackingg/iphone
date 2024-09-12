@@ -3,7 +3,7 @@ import { colorData } from "./colorData";
 
 function ColorPicker({ onColorChange }) {
   return (
-    <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex p-2 gap-4 bg-white rounded-2xl shadow-lg">
+    <div className="absolute bottom-20 lg:bottom-10 left-1/2 transform -translate-x-1/2 flex p-2 gap-4 bg-white rounded-2xl shadow-lg">
       {colorData.map((color) => (
         <>
           <div
