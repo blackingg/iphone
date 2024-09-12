@@ -30,7 +30,7 @@ function App() {
             intensity={0.5}
           />
           <directionalLight
-            color={"#5E26B3"}
+            color={"#FFFFFF"}
             position={[0, -50, 100]}
             intensity={1}
           />
