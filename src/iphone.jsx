@@ -99,7 +99,7 @@ export function Iphone({ color, ...props }) {
         <mesh
           //logo
           geometry={nodes.jkbTFmXuEVLLYcD.geometry}
-          material={coloredMaterial}
+          material={materials.uckFqbtjWMMhPMW}
         />
         <mesh
           //charging port

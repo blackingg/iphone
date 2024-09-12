@@ -4,13 +4,19 @@ import { Canvas } from "@react-three/fiber";
 import { Iphone } from "./iphone";
 import { OrbitControls } from "@react-three/drei";
 import ColorPicker from "./colorPicker";
+import { LoadingScreen } from "./LoadingScreen";
 
 function App() {
   const [selectedColor, setSelectedColor] = useState("#1C1C1E"); // Default color
+  const [started, setStarted] = useState(false);
 
   return (
     <div className="relative bg-[#CBD0B9] h-screen w-screen">
-      <Suspense>
+      <LoadingScreen
+        started={started}
+        setStarted={setStarted}
+      />
+      <Suspense fallback={null}>
         <Canvas
           shadows
           camera={{ position: [0, 0, 400], near: 0.1, far: 5000 }}
