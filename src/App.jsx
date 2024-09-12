@@ -7,7 +7,7 @@ import ColorPicker from "./colorPicker";
 import { LoadingScreen } from "./LoadingScreen";
 
 function App() {
-  const [selectedColor, setSelectedColor] = useState("#1C1C1E"); // Default color
+  const [selectedColor, setSelectedColor] = useState("#1C1C1E");
   const [started, setStarted] = useState(false);
 
   return (

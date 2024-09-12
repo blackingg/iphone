@@ -12,10 +12,10 @@ function ColorPicker({ onColorChange }) {
             onClick={() => onColorChange(color.hex)}
           >
             <div
-              className="w-7 md:w-12 h-7 md:h-12 rounded-full cursor-pointer"
+              className="w-10 md:w-12 h-10 md:h-12 rounded-full cursor-pointer shadow-lg"
               style={{ backgroundColor: color.hex }}
             ></div>
-            <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gray-800 text-white text-xs md:text-sm px-2 py-1 rounded-md">
+            <div className="absolute bottom-32 lg:bottom-16 left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gray-800 text-white text-xs md:text-sm px-2 py-1 rounded-md">
               {color.name}
             </div>
           </div>
