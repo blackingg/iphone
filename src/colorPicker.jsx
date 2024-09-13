@@ -20,7 +20,7 @@ function ColorPicker({ onColorChange, theme = "light" }) {
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (pickerRef.current && !pickerRef.current.contains(event.target)) {
-        setPickerVisible(false); // Close the picker if clicking outside
+        setPickerVisible(false); 
       }
     };
 
@@ -34,7 +34,6 @@ function ColorPicker({ onColorChange, theme = "light" }) {
 
   return (
     <div className="absolute bottom-20 lg:bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col gap-4 p-2 bg-white rounded-2xl shadow-lg">
-      {/* Predefined color buttons */}
       <div className="flex gap-4">
         {colorData.map((color) => (
           <div
@@ -56,7 +55,7 @@ function ColorPicker({ onColorChange, theme = "light" }) {
             isPickerVisible
               ? "bg-colorWheel bg-black bg-opacity-50 bg-blend-multiply"
               : "bg-colorWheel"
-          } bg-no-repeat bg-center bg-cover w-10 md:w-12 h-10 md:h-12 rounded-full relative`}
+          } bg-no-repeat bg-center bg-cover w-10 md:w-12 h-10 md:h-12 rounded-full relative transition-all duration-300 cursor-pointer shadow-lg`}
           onClick={togglePickerVisibility}
         ></div>
         {isPickerVisible && (
