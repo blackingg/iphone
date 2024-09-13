@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { SketchPicker } from "react-color";
 import { colorData } from "./colorData";
 
 function ColorPicker({ onColorChange, theme = "light" }) {
   const [selectedColor, setSelectedColor] = useState("#ffffff");
   const [isPickerVisible, setPickerVisible] = useState(false);
+  const pickerRef = useRef(null);
 
   const handleColorChange = (color) => {
     setSelectedColor(color.hex);
@@ -15,15 +16,21 @@ function ColorPicker({ onColorChange, theme = "light" }) {
     setPickerVisible(!isPickerVisible);
   };
 
-  // Apply custom styles to SketchPicker based on the current theme
-  const pickerStyles = {
-    default: {
-      picker: {
-        background: theme === "dark" ? "#333" : "#fff",
-        color: theme === "dark" ? "#fff" : "#000",
-      },
-    },
-  };
+  // Close the SketchPicker if clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (pickerRef.current && !pickerRef.current.contains(event.target)) {
+        setPickerVisible(false); // Close the picker if clicking outside
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    // Cleanup event listener when component unmounts
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [pickerRef]);
 
   return (
     <div className="absolute bottom-20 lg:bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col gap-4 p-2 bg-white rounded-2xl shadow-lg">
@@ -53,11 +60,13 @@ function ColorPicker({ onColorChange, theme = "light" }) {
           onClick={togglePickerVisibility}
         ></div>
         {isPickerVisible && (
-          <div className="absolute bottom-24 left-1/2 transform -translate-x-1/2">
+          <div
+            className="absolute bottom-24 left-1/2 transform -translate-x-1/2"
+            ref={pickerRef}
+          >
             <SketchPicker
               color={selectedColor}
               onChangeComplete={handleColorChange}
-              styles={pickerStyles}
             />
           </div>
         )}
